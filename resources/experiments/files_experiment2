@@ -1,0 +1,73 @@
+~~~~0L-src/main/java/nl/tudelft/jpacman/level/Level.java
+    /**
+ 	 * Registers a player on this level, assigning him to a starting position.
+ 	 *
+ 	 * @param p
+ 	 *            The player to register.
+ 	 */
+ 	public void registerPlayer(Player p) {
+
+ 		players.add(p);
+ 		Square square = startSquares.get(startSquareIndex);
+
+ 		// TODO put player on square.
+
+ 		startSquareIndex++;
+ 		startSquareIndex %= startSquares.size();
+ 	}
+~~~~
+
+~~~~0R-src/main/java/nl/tudelft/jpacman/level/Level.java
+    /**
+ 	 * Registers a player on this level, assigning him to a starting position. A
+ 	 * player can only be registered once, registering a player again will have
+ 	 * no effect.
+ 	 *
+ 	 * @param p
+ 	 *            The player to register.
+ 	 */
+ 	public void registerPlayer(Player p) {
+ 		assert p != null;
+
+ 		if (players.contains(p)) {
+ 			return;
+ 		}
+
+ 		players.add(p);
+ 		Square square = startSquares.get(startSquareIndex);
+
+ 		p.occupy(square);
+ 		startSquareIndex++;
+ 		startSquareIndex %= startSquares.size();
+ 	}
+~~~~
+
+~~~~1L-src/test/java/nl/tudelft/jpacman/level/LevelTest.java
+
+~~~~
+
+~~~~1R-src/test/java/nl/tudelft/jpacman/level/LevelTest.java
+public class ExerciseSumArrayTests {
+    public class LevelTest {
+
+ 	private Level level;
+ 	private final NPC ghost = mock(NPC.class);
+ 	private final Square square1 = mock(Square.class);
+ 	private final Square square2 = mock(Square.class);
+ 	private final Board board = mock(Board.class);
+
+ 	@Before
+ 	public void setup() {
+ 		level = new Level(board, Lists.newArrayList(ghost), Lists.newArrayList(
+ 				square1, square2));
+ 		when(ghost.getInterval()).thenReturn(100L);
+ 	}
+
+ 	@Test
+ 	public void startStop() {
+ 		Game game = mock(Game.class);
+ 		level.start(game);
+ 		level.stop();
+ 		assertFalse(level.isInProgress());
+ 	}
+~~~~

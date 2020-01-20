@@ -1,0 +1,65 @@
+~~~~0L-src/main/java/nl/tudelft/jpacman/sprite/ImageSprite.java
+    @Override
+ 	public Sprite split(int x, int y, int width, int height) {
+        if (image.getWidth(null) < x || image.getHeight(null) < y) {
+            return new EmptySprite();
+        }
+        BufferedImage newImage = newImage(width, height);
+ 		newImage.createGraphics().drawImage(image, 0, 0, width - 1, height - 1,
+ 				x, y, x + width - 1, y + height - 1, null);
+
+ 		return new ImageSprite(newImage);
+ 	}
+~~~~
+
+~~~~0R-src/main/java/nl/tudelft/jpacman/sprite/ImageSprite.java
+    @Override
+ 	public Sprite split(int x, int y, int width, int height) {
+        if (withinImage(x, y) && withinImage(x + width, y + width)) {
+ 			BufferedImage newImage = newImage(width, height);
+ 			newImage.createGraphics().drawImage(image, 0, 0, width - 1, height - 1,
+ 					x, y, x + width - 1, y + height - 1, null);
+
+ 			return new ImageSprite(newImage);
+        }
+        return new EmptySprite();
+ 	}
+
+ 	private boolean withinImage(int x, int y) {
+ 		return x < image.getWidth(null) && x >= 0 && y < image.getHeight(null) && y >= 0;
+ 	}
+~~~~
+
+~~~~1L-src/test/java/nl/tudelft/jpacman/sprite/SpriteTest.java
+
+~~~~
+
+~~~~1R-src/test/java/nl/tudelft/jpacman/sprite/SpriteTest.java
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.io.IOException;
+
+import org.junit.Test;
+
+/**
+* Verifies the loading of sprites.
+*
+* @author Jeroen Roosen <j.roosen@student.tudelft.nl>
+*/
+public class SpriteTest {
+
+    /**
+    * Verifies the width of a static sprite.
+    *
+    * @throws IOException
+    *             when the sprite could not be loaded.
+    */
+    @Test
+    public void spriteWidth() throws IOException {
+        SpriteStore store = new SpriteStore();
+        Sprite sprite = store.loadSprite("/sprite/64x64white.png");
+        assertEquals(64, sprite.getWidth());
+    }
+}
+~~~~

@@ -1,0 +1,67 @@
+<html>
+<head>
+    <title>Intro</title>
+    <link rel="stylesheet" media="all" href="{{ url_for('static', filename='css/style.css')}}" />
+  	<!-- Requires jQuery -->
+	<script src="{{ url_for('static', filename='js/jquery.min.js')}}" type="text/javascript"></script>
+
+    <script>
+        $(document).ready(function(){
+            var form = document.getElementById('my-form');
+            if (form.attachEvent) {
+                form.attachEvent("submit", processForm);
+            } else {
+                form.addEventListener("submit", processForm);
+            }
+        });
+        function processForm(){
+            var textarea = document.getElementById("donation_to_5")
+            if (textarea.value !== undefined){
+                var other = document.getElementById("donation_to_4")
+                $(other).val(textarea.value)
+            }
+        }
+    </script>
+</head>
+<body>
+    <section class="content">
+        <form action="start" method="post" id="my-form">
+            <p>Dear Participant,</p>
+            <p>We are researchers investigating <strong>.......</strong>. We would be grateful if you could help our research and participate in our experiment on this subject.</p>
+            <p>With this experiment:</p>
+            <ol>
+                <li>we compare <strong>.....</strong> under different circumstances</li>
+                <li>your data will only be stored and used in <strong>anonymized form</strong></li>
+            </ol>
+            <p>The code change to review is based on a Java project, so <strong>basic Java skills are needed</strong>.</p>
+            <p>Please stay focused on the experiment until it ends, otherwise we won't be able to use your data. Once you start the experiment complete it at once without any interruptions.</p>
+            <p>It would be great if you could put your browser into full-screen mode now. Often this can be done by pressing F11.</p>
+
+            <fieldset id="fieldset_question_0" class="container_radio_buttons"><p style="margin-top: 2px;">Can we also share your results (in <b>anonymized</b> form) in a publicly available dataset?<br>
+            <small>(Selecting "yes" allows other researchers and the public to benefit from your answers and effort)</small></p>
+                <label><input type="radio" name="share_results" id="share_results_yes" value="0" class="option-input radio" required>Yes</label><br>
+                <label><input type="radio" name="share_results" id="share_results_no" value="1" class="option-input radio">No</label><br>
+            </fieldset><br>
+
+            <fieldset id="fieldset_question_0" class="container_radio_buttons"><p style="margin-top: 2px;">To thank you more concretely for your participation in this experiment, we are going to donate 5 USD to a
+                non-profit organization on your behalf. <br>
+                Please select the organization you prefer:</p>
+                <label><input type="radio" name="donation_to" id="donation_to_0" value="0" class="option-input radio" required>Wikimedia Foundation (https://wikimediafoundation.org)</label><br>
+                <label><input type="radio" name="donation_to" id="donation_to_1" value="1" class="option-input radio">Mozilla Foundation (https://www.mozilla.org/en-US/foundation/)</label><br>
+                <label><input type="radio" name="donation_to" id="donation_to_2" value="2" class="option-input radio">Free Software Foundation (https://www.fsf.org)</label><br>
+                <label><input type="radio" name="donation_to" id="donation_to_3" value="3" class="option-input radio">.....</label><br>
+                <label><input type="radio" name="donation_to" id="donation_to_4" value="4" class="option-input radio">Other - Write in <textarea name="donation_to" id="donation_to_5" style="height: 30px; vertical-align: middle; margin-top: 0;"></textarea></label><br>
+            </fieldset><br>
+
+            <p>Thank you and we really hope you enjoy participating in our study!</p>
+            <p>Authors .....</p>
+            <br><ul>
+            <li><a href="#">Link to author webiste</a>, Ph.D. Student at ...</li>
+            </ul>
+            <p>Please contact <strong>.....</strong> in case you encounter any problems with the experiment.</p>
+            <br>
+            <button type="submit" class="button blue" onclick="save_results()">Start ►</button>
+        </form>
+    </section>
+</body>
+</html>

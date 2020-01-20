@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+   	<!-- Requires jQuery -->
+	<script src="{{ url_for('static', filename='js/jquery.min.js')}}" type="text/javascript"></script>
+
+    <link rel="stylesheet" media="all" href="{{ url_for('static', filename='css/style.css')}}" />
+        <script>
+        $(document).ready(function(){
+            var form = document.getElementById('current_form');
+            if (form.attachEvent) {
+                form.attachEvent("submit", processForm);
+            } else {
+                form.addEventListener("submit", processForm);
+            }
+        });
+        function processForm(){
+            var ta0 = document.getElementById("qgendertext");
+            var ta2 = document.getElementById("q2text");
+            if (ta0.value !== undefined){
+                var other = document.getElementById("qgendera2");
+                $(other).val(ta0.value)
+            }
+            if (ta2.value !== undefined){
+                other = document.getElementById("q2a9");
+                $(other).val(ta2.value)
+            }
+        }
+    </script>
+</head>
+<body>
+<section class="content">
+    <p>Please answer the following questions before starting the experiment:</p><br>
+    <form action="experiment" method="post" id="current_form">
+        <fieldset id="fieldset_question_gender" class="container_radio_buttons"><p>What is your gender?</p>
+            <label><input type="radio" name="question_gender" id="qgendera0" value="0" class="option-input radio" required>Male</label><br>
+            <label><input type="radio" name="question_gender" id="qgendera1" value="1" class="option-input radio">Female</label><br>
+            <label><input type="radio" name="question_gender" id="qgendera2" value="2" class="option-input radio">Other: <textarea name="question_gender" id="qgendertext" style="height: 21px; vertical-align: middle; margin-top: 0;"></textarea></label><br>
+            <label><input type="radio" name="question_gender" id="qgendera3" value="3" class="option-input radio">Prefer not to answer</label><br>
+        </fieldset><br>
+        <fieldset id="fieldset_question_0" class="container_radio_buttons"><p>What is your age?</p>
+            <label><input type="number" pattern="\d+" name="question_0" id="q0" class="input-number" required></label><br>
+        </fieldset><br>
+        <fieldset id="fieldset_question_english" class="container_radio_buttons"><p>What is  your level of English?</p>
+                    <label><input type="radio" name="question_english" id="qenglisha0" value="0" class="option-input radio" required>Elementary proficiency (you can communicate/understand the most basic needs)</label><br>
+                    <label><input type="radio" name="question_english" id="qenglisha1" value="1" class="option-input radio">Limited working proficiency (you can respond simply and understand simple sentences)</label><br>
+                    <label><input type="radio" name="question_english" id="qenglisha2" value="2" class="option-input radio">Professional working proficiency (you can discuss/understand topics in particular interests and special fields of competence with reasonable ease)</label><br>
+                    <label><input type="radio" name="question_english" id="qenglisha3" value="3" class="option-input radio">Full professional proficiency (your can respond/read appropriately even in unfamiliar grounds or situations)</label><br>
+                    <label><input type="radio" name="question_english" id="qenglisha4" value="4" class="option-input radio">Native or bilingual proficiency</label><br>
+        </fieldset><br>
+        <fieldset id="fieldset_question_1" class="container_radio_buttons"><p>What is your highest achieved level of education?</p>
+                    <label><input type="radio" name="question_1" id="q1a0" value="0" class="option-input radio" required>High School but did not graduate</label><br>
+                    <label><input type="radio" name="question_1" id="q1a1" value="1" class="option-input radio">High School graduate or GED</label><br>
+                    <label><input type="radio" name="question_1" id="q1a2" value="2" class="option-input radio">Some college or 2-year degree</label><br>
+                    <label><input type="radio" name="question_1" id="q1a3" value="3" class="option-input radio">Bachelor in CS (Computer Science)</label><br>
+                    <label><input type="radio" name="question_1" id="q1a4" value="4" class="option-input radio">Bachelor in STEM (Science, Technology, Engineering and Mathematics)</label><br>
+                    <label><input type="radio" name="question_1" id="q1a5" value="5" class="option-input radio">Bachelor in a different area than CS or STEM</label><br>
+                    <label><input type="radio" name="question_1" id="q1a6" value="6" class="option-input radio">Master in CS</label><br>
+                    <label><input type="radio" name="question_1" id="q1a7" value="7" class="option-input radio">Master in STEM</label><br>
+                    <label><input type="radio" name="question_1" id="q1a8" value="8" class="option-input radio">Master in a different area than CS or STEM</label><br>
+                    <label><input type="radio" name="question_1" id="q1a9" value="9" class="option-input radio">PhD or higher academic title in CS</label><br>
+                    <label><input type="radio" name="question_1" id="q1a10" value="10" class="option-input radio">PhD or higher academic title in STEM</label><br>
+                    <label><input type="radio" name="question_1" id="q1a11" value="11" class="option-input radio">PhD or higher academic title in a different area than CS or STEM</label><br>
+        </fieldset><br>
+        <fieldset id="fieldset_question_2" class="container_radio_buttons"><p>What is your main role?</p>
+                    <label><input type="radio" name="question_2" id="q2a0" value="0" class="option-input radio" required>Programmer / Software Developer</label><br>
+                    <label><input type="radio" name="question_2" id="q2a1" value="1" class="option-input radio">Tester</label><br>
+                    <label><input type="radio" name="question_2" id="q2a2" value="2" class="option-input radio">Analyst</label><br>
+                    <label><input type="radio" name="question_2" id="q2a3" value="3" class="option-input radio">Software Architect</label><br>
+                    <label><input type="radio" name="question_2" id="q2a4" value="4" class="option-input radio">IT Operations</label><br>
+                    <label><input type="radio" name="question_2" id="q2a5" value="5" class="option-input radio">Manager</label><br>
+                    <label><input type="radio" name="question_2" id="q2a6" value="6" class="option-input radio">Researcher / Professor</label><br>
+                    <label><input type="radio" name="question_2" id="q2a7" value="7" class="option-input radio">PhD Student</label><br>
+                    <label><input type="radio" name="question_2" id="q2a8" value="8" class="option-input radio">Student</label><br>
+                    <label><input type="radio" name="question_2" id="q2a9" value="9" class="option-input radio">Other: <textarea name="question_2" id="q2text" style="height: 21px; vertical-align: middle; margin-top: 0;"></textarea></label><br>
+        </fieldset><br>
+        <fieldset id="fieldset_question_3" class="container_radio_buttons"><p>How many years have you been developing software professionally?</p>
+                    <label><input type="radio" name="question_3" id="q3a0" value="0" class="option-input radio" required>I have no experience in professional software development</label><br>
+                    <label><input type="radio" name="question_3" id="q3a1" value="1" class="option-input radio">1 year or less</label><br>
+                    <label><input type="radio" name="question_3" id="q3a2" value="2" class="option-input radio">2 years</label><br>
+                    <label><input type="radio" name="question_3" id="q3a3" value="3" class="option-input radio">3 - 5 years</label><br>
+                    <label><input type="radio" name="question_3" id="q3a4" value="4" class="option-input radio">6 - 10 years</label><br>
+                    <label><input type="radio" name="question_3" id="q3a5" value="5" class="option-input radio">11 years or more</label><br>
+        </fieldset><br>
+        <fieldset id="fieldset_question_4" class="container_radio_buttons"><p>How many years have you been programming in Java (also not professionally)?</p>
+                    <label><input type="radio" name="question_4" id="q4a0" value="0" class="option-input radio" required>I have never programmed in Java so far</label><br>
+                    <label><input type="radio" name="question_4" id="q4a1" value="1" class="option-input radio">1 year or less</label><br>
+                    <label><input type="radio" name="question_4" id="q4a2" value="2" class="option-input radio">2 years</label><br>
+                    <label><input type="radio" name="question_4" id="q4a3" value="3" class="option-input radio">3 - 5 years</label><br>
+                    <label><input type="radio" name="question_4" id="q4a4" value="4" class="option-input radio">6 - 10 years</label><br>
+                    <label><input type="radio" name="question_4" id="q4a5" value="5" class="option-input radio">11 years or more</label><br>
+        </fieldset><br>
+        <fieldset id="fieldset_question_5" class="container_radio_buttons"><p>How often do you currently program software?</p>
+                    <label><input type="radio" name="question_5" id="q5a0" value="0" class="option-input radio" required>Not at all</label><br>
+                    <label><input type="radio" name="question_5" id="q5a1" value="1" class="option-input radio">About once a year</label><br>
+                    <label><input type="radio" name="question_5" id="q5a2" value="2" class="option-input radio">About once a month</label><br>
+                    <label><input type="radio" name="question_5" id="q5a3" value="3" class="option-input radio">About once a week</label><br>
+                    <label><input type="radio" name="question_5" id="q5a4" value="4" class="option-input radio">About once a day or more often</label><br>
+        </fieldset><br>
+        <fieldset id="fieldset_question_6" class="container_radio_buttons"><p>How many years have you been doing code reviews?</p>
+                    <label><input type="radio" name="question_6" id="q6a0" value="0" class="option-input radio" required>I have never done a code review</label><br>
+                    <label><input type="radio" name="question_6" id="q6a1" value="1" class="option-input radio">1 year or less</label><br>
+                    <label><input type="radio" name="question_6" id="q6a2" value="2" class="option-input radio">2 years</label><br>
+                    <label><input type="radio" name="question_6" id="q6a3" value="3" class="option-input radio">3 - 5 years</label><br>
+                    <label><input type="radio" name="question_6" id="q6a4" value="4" class="option-input radio">6 - 10 years</label><br>
+                    <label><input type="radio" name="question_6" id="q6a5" value="5" class="option-input radio">11 years or more</label><br>
+        </fieldset><br>
+        <fieldset id="fieldset_question_7" class="container_radio_buttons"><p>How often do you currently perform code reviews?</p>
+                    <label><input type="radio" name="question_7" id="q7a0" value="0" class="option-input radio" required>Not at all</label><br>
+                    <label><input type="radio" name="question_7" id="q7a1" value="1" class="option-input radio">About once a year</label><br>
+                    <label><input type="radio" name="question_7" id="q7a2" value="2" class="option-input radio">About once a month</label><br>
+                    <label><input type="radio" name="question_7" id="q7a3" value="3" class="option-input radio">About once a week</label><br>
+                    <label><input type="radio" name="question_7" id="q7a4" value="4" class="option-input radio">About once a day or more often</label><br>
+        </fieldset><br>
+        <fieldset id="fieldset_question_8" class="container_textarea"><p>How many hours have you worked today?</p>
+            <label><input type="number" pattern="\d+" name="question_8" id="q8" class="input-number" required></label><br>
+        </fieldset><br>
+        <fieldset id="fieldset_question_9" class="container_radio_buttons"><p>How tired/fit do you feel at the moment?</p>
+                    <label><input type="radio" name="question_9" id="q9a0" value="0" class="option-input radio" required>very tired</label><br>
+                    <label><input type="radio" name="question_9" id="q9a1" value="1" class="option-input radio">moderately tired</label><br>
+                    <label><input type="radio" name="question_9" id="q9a2" value="2" class="option-input radio">neutral</label><br>
+                    <label><input type="radio" name="question_9" id="q9a3" value="3" class="option-input radio">moderately fit</label><br>
+                    <label><input type="radio" name="question_9" id="q9a4" value="4" class="option-input radio">very fit</label><br>
+        </fieldset><br>
+        <fieldset id="fieldset_question_10" class="container_radio_buttons"><p>How stressed do you currently feel?</p>
+                    <label><input type="radio" name="question_10" id="q10a0" value="0" class="option-input radio" required>very stressed</label><br>
+                    <label><input type="radio" name="question_10" id="q10a1" value="1" class="option-input radio">moderately stressed</label><br>
+                    <label><input type="radio" name="question_10" id="q10a2" value="2" class="option-input radio">neutral</label><br>
+                    <label><input type="radio" name="question_10" id="q10a3" value="3" class="option-input radio">moderately relaxed</label><br>
+                    <label><input type="radio" name="question_10" id="q10a4" value="4" class="option-input radio">very relaxed</label><br>
+        </fieldset>
+        <br>
+        <button type="submit" id="submitter" class="button blue">Next</button>
+    </form>
+
+</section>
+</body>
+</html>

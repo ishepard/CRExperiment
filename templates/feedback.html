@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+   	<!-- Requires jQuery -->
+	<script src="{{ url_for('static', filename='js/jquery.min.js')}}" type="text/javascript"></script>
+
+    <link rel="stylesheet" media="all" href="{{ url_for('static', filename='css/style.css')}}" />
+</head>
+<body>
+<section class="content">
+    <br>
+    <form action="conclusion" method="post" id="current_form">
+        <fieldset id="fieldset_question_0" class="container_radio_buttons"><p>If you have any comments on the experiment (code review part and/or second part), please add them here:</p>
+            <label><textarea id="q0" name="feedback_0"></textarea></label>
+        </fieldset><br>
+        <fieldset id="fieldset_question_1" class="container_radio_buttons"><p>If you would like to receive the results of this study, please leave your email here. <br>
+            <small>Results are used anonymously. Your email will never be shared with anyone and you will not receive any other emails than the results of this study. After we email the study results to you, we will delete your email.</small></p>
+            <label><textarea id="q1" name="feedback_1" style="height: 50px"></textarea></label>
+        </fieldset><br>
+        <br>
+        <button type="submit" id="submitter" class="button blue">Complete</button>
+    </form>
+
+</section>
+</body>
+</html>

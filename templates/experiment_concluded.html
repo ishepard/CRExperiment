@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+ {% block content %}
+     <p>Please answer the following questions after having concluded the experiment:</p><br>
+     <form action="feedback" method="post" id="current_form">
+         {{ post_questions|safe }}
+         <br>
+         <button type="submit" id="submitter" class="button blue">Next</button>
+     </form>
+{% endblock %}
