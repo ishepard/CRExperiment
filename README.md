@@ -6,7 +6,7 @@ This tool can be used to do online (controlled) experiments on code reviews. CRE
 
 
 ## INSTALL
-If you like to run the tool, you can do it with very simple steps.
+If you would like to run the tool, you can do it with very simple steps.
 First, clone the repo:
 
 ```
